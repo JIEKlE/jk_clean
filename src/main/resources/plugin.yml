@@ -1,0 +1,11 @@
+name: jk_clean
+version: '${project.version}'
+main: jiekie.CleanPlugin
+api-version: '1.20'
+authors: [Jiekie]
+description: 서버 청소 플러그인
+commands:
+  청소:
+    description: 서버 청소 명령어
+    usage: /청소
+    tab-completer: jiekie.completer.CleanTabCompleter
