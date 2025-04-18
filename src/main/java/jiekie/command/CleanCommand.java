@@ -84,7 +84,12 @@ public class CleanCommand implements CommandExecutor {
     private void killMonsters(Player player) {
         World world = player.getWorld();
         for(Entity entity : world.getEntities()) {
-            if(entity instanceof Monster)
+            if(entity instanceof Monster
+                || entity instanceof Slime
+                || entity instanceof Shulker
+                || entity instanceof MagmaCube
+                || entity instanceof EnderDragon
+                || entity instanceof Wither)
                 entity.remove();
         }
 
