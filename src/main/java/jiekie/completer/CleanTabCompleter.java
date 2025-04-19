@@ -14,6 +14,8 @@ public class CleanTabCompleter implements TabCompleter {
     @Nullable
     @Override
     public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+        if(!sender.hasPermission("jk.clean.command")) return Collections.emptyList();
+
         if(args.length == 1)
             return Arrays.asList("채팅창", "몬스터", "동물", "아이템", "화살", "경험치", "주민", "도움말");
 
