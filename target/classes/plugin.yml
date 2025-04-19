@@ -9,3 +9,5 @@ commands:
     description: 서버 청소 명령어
     usage: /청소
     tab-completer: jiekie.completer.CleanTabCompleter
+    permission: jk.clean.command
+    permission-message: ''
