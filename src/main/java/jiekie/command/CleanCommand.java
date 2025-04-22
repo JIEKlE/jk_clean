@@ -12,8 +12,7 @@ import org.jetbrains.annotations.NotNull;
 public class CleanCommand implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-        Player player = (Player) sender;
-        if(sender instanceof Player && !player.isOp()) {
+        if(sender instanceof Player && !sender.isOp()) {
             ChatUtil.notOp(sender);
             return true;
         }
@@ -29,11 +28,11 @@ public class CleanCommand implements CommandExecutor {
                 break;
 
             case "몬스터":
-                killMonsters(player);
+                killMonsters(sender);
                 break;
 
             case "동물":
-                killAnimals(player);
+                killAnimals(sender);
                 break;
 
             case "아이템":
@@ -49,7 +48,7 @@ public class CleanCommand implements CommandExecutor {
                 break;
 
             case "주민":
-                killVillagers(player);
+                killVillagers(sender);
                 break;
 
             case "도움말":
@@ -74,7 +73,13 @@ public class CleanCommand implements CommandExecutor {
     }
 
     /* 몬스터 */
-    private void killMonsters(Player player) {
+    private void killMonsters(CommandSender sender) {
+        if(!(sender instanceof Player)) {
+            ChatUtil.notPlayer(sender);
+            return;
+        }
+
+        Player player = (Player) sender;
         World world = player.getWorld();
         for(Entity entity : world.getEntities()) {
             if(entity instanceof Monster
@@ -90,7 +95,13 @@ public class CleanCommand implements CommandExecutor {
     }
 
     /* 동물 */
-    private void killAnimals(Player player) {
+    private void killAnimals(CommandSender sender) {
+        if(!(sender instanceof Player)) {
+            ChatUtil.notPlayer(sender);
+            return;
+        }
+
+        Player player = (Player) sender;
         World world = player.getWorld();
         for (Entity entity : world.getEntities()) {
             if (entity instanceof Animals)
@@ -137,7 +148,13 @@ public class CleanCommand implements CommandExecutor {
     }
 
     /* 주민 */
-    private void killVillagers(Player player) {
+    private void killVillagers(CommandSender sender) {
+        if(!(sender instanceof Player)) {
+            ChatUtil.notPlayer(sender);
+            return;
+        }
+
+        Player player = (Player) sender;
         World world = player.getWorld();
         for (Entity entity : world.getEntities()) {
             if (entity instanceof Villager)

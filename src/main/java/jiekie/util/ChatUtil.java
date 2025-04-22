@@ -13,6 +13,10 @@ public class ChatUtil {
         sender.sendMessage(getWarnPrefix() + "권한이 없습니다.");
     }
 
+    public static void notPlayer(CommandSender sender) {
+        sender.sendMessage(getWarnPrefix() + "플레이어가 아닙니다.");
+    }
+
     public static void cleanChat() {
         Bukkit.broadcastMessage(getWarnPrefix() + "채팅창을 청소했습니다.");
     }
