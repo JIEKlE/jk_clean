@@ -2,4 +2,3 @@ jiekie\completer\CleanTabCompleter.class
 jiekie\command\CleanCommand.class
 jiekie\CleanPlugin.class
 jiekie\util\ChatUtil.class
-jiekie\util\SoundUtil.class

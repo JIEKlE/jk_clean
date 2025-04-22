@@ -1,7 +1,6 @@
 package jiekie.command;
 
 import jiekie.util.ChatUtil;
-import jiekie.util.SoundUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.command.Command;
@@ -13,25 +12,20 @@ import org.jetbrains.annotations.NotNull;
 public class CleanCommand implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-        if(!(sender instanceof Player)) {
-            ChatUtil.notPlayer(sender);
-            return true;
-        }
-
         Player player = (Player) sender;
-        if(!player.isOp()) {
-            ChatUtil.notOp(player);
+        if(sender instanceof Player && !player.isOp()) {
+            ChatUtil.notOp(sender);
             return true;
         }
 
         if(args == null || args.length == 0) {
-            ChatUtil.commandHelper(player);
+            ChatUtil.commandHelper(sender);
             return true;
         }
 
         switch (args[0]) {
             case "채팅창":
-                cleanChat(player);
+                cleanChat();
                 break;
 
             case "몬스터":
@@ -43,15 +37,15 @@ public class CleanCommand implements CommandExecutor {
                 break;
 
             case "아이템":
-                killDropItems(player);
+                killDropItems();
                 break;
 
             case "화살":
-                killArrows(player);
+                killArrows();
                 break;
 
             case "경험치":
-                killExperienceOrbs(player);
+                killExperienceOrbs();
                 break;
 
             case "주민":
@@ -59,11 +53,11 @@ public class CleanCommand implements CommandExecutor {
                 break;
 
             case "도움말":
-                ChatUtil.commandList(player);
+                ChatUtil.commandList(sender);
                 break;
 
             default:
-                ChatUtil.commandHelper(player);
+                ChatUtil.commandHelper(sender);
                 break;
         }
 
@@ -71,13 +65,12 @@ public class CleanCommand implements CommandExecutor {
     }
 
     /* 채팅창 */
-    private void cleanChat(Player player) {
+    private void cleanChat() {
         for(int i = 0 ; i < 100 ; i++) {
             Bukkit.broadcastMessage("");
         }
 
-        ChatUtil.cleanChat(player);
-        SoundUtil.playNoteBlockBell(player);
+        ChatUtil.cleanChat();
     }
 
     /* 몬스터 */
@@ -93,8 +86,7 @@ public class CleanCommand implements CommandExecutor {
                 entity.remove();
         }
 
-        ChatUtil.killMonsters(player);
-        SoundUtil.playNoteBlockBell(player);
+        ChatUtil.killMonsters();
     }
 
     /* 동물 */
@@ -105,47 +97,46 @@ public class CleanCommand implements CommandExecutor {
                 entity.remove();
         }
 
-        ChatUtil.killAnimals(player);
-        SoundUtil.playNoteBlockBell(player);
+        ChatUtil.killAnimals();
     }
 
     /* 아이템 */
-    private void killDropItems(Player player) {
-        World world = player.getWorld();
-        for (Entity entity : world.getEntities()) {
-            if (entity instanceof Item)
-                entity.remove();
+    private void killDropItems() {
+        for(World world : Bukkit.getWorlds()) {
+            for (Entity entity : world.getEntities()) {
+                if (entity instanceof Item)
+                    entity.remove();
+            }
         }
 
-        ChatUtil.killItems(player);
-        SoundUtil.playNoteBlockBell(player);
+        ChatUtil.killItems();
     }
 
     /* 화살 */
-    private void killArrows(Player player) {
-        World world = player.getWorld();
-        for (Entity entity : world.getEntities()) {
-            if (entity instanceof Arrow)
-                entity.remove();
+    private void killArrows() {
+        for(World world : Bukkit.getWorlds()) {
+            for (Entity entity : world.getEntities()) {
+                if (entity instanceof Arrow)
+                    entity.remove();
+            }
         }
 
-        ChatUtil.killArrows(player);
-        SoundUtil.playNoteBlockBell(player);
+        ChatUtil.killArrows();
     }
 
     /* 경험치 */
-    private void killExperienceOrbs(Player player) {
-        World world = player.getWorld();
-        for (Entity entity : world.getEntities()) {
-            if (entity instanceof ExperienceOrb)
-                entity.remove();
+    private void killExperienceOrbs() {
+        for(World world : Bukkit.getWorlds()) {
+            for (Entity entity : world.getEntities()) {
+                if (entity instanceof ExperienceOrb)
+                    entity.remove();
+            }
         }
 
-        ChatUtil.killExperienceOrbs(player);
-        SoundUtil.playNoteBlockBell(player);
+        ChatUtil.killExperienceOrbs();
     }
 
-    /* 경험치 */
+    /* 주민 */
     private void killVillagers(Player player) {
         World world = player.getWorld();
         for (Entity entity : world.getEntities()) {
@@ -153,7 +144,6 @@ public class CleanCommand implements CommandExecutor {
                 entity.remove();
         }
 
-        ChatUtil.killVillagers(player);
-        SoundUtil.playNoteBlockBell(player);
+        ChatUtil.killVillagers();
     }
 }
