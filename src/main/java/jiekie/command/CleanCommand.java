@@ -65,8 +65,9 @@ public class CleanCommand implements CommandExecutor {
 
     /* 채팅창 */
     private void cleanChat() {
-        for(int i = 0 ; i < 100 ; i++) {
-            Bukkit.broadcastMessage("");
+        for(Player player : Bukkit.getOnlinePlayers()) {
+            for(int i = 0 ; i < 100 ; i++)
+                player.sendMessage("");
         }
 
         ChatUtil.cleanChat();
