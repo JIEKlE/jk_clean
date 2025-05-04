@@ -69,7 +69,7 @@ public class CleanCommand implements CommandExecutor {
             Bukkit.broadcastMessage("");
         }
 
-        ChatUtil.cleanChat();
+        ChatUtil.broadcast(ChatUtil.CLEAN_CHAT);
     }
 
     /* 몬스터 */
@@ -85,13 +85,11 @@ public class CleanCommand implements CommandExecutor {
             if(entity instanceof Monster
                 || entity instanceof Slime
                 || entity instanceof Shulker
-                || entity instanceof MagmaCube
-                || entity instanceof EnderDragon
-                || entity instanceof Wither)
+                || entity instanceof EnderDragon)
                 entity.remove();
         }
 
-        ChatUtil.killMonsters();
+        ChatUtil.broadcast(ChatUtil.KILL_MONSTERS);
     }
 
     /* 동물 */
@@ -108,7 +106,7 @@ public class CleanCommand implements CommandExecutor {
                 entity.remove();
         }
 
-        ChatUtil.killAnimals();
+        ChatUtil.broadcast(ChatUtil.KILL_ANIMALS);
     }
 
     /* 아이템 */
@@ -120,7 +118,7 @@ public class CleanCommand implements CommandExecutor {
             }
         }
 
-        ChatUtil.killItems();
+        ChatUtil.broadcast(ChatUtil.KILL_ITEMS);
     }
 
     /* 화살 */
@@ -132,7 +130,7 @@ public class CleanCommand implements CommandExecutor {
             }
         }
 
-        ChatUtil.killArrows();
+        ChatUtil.broadcast(ChatUtil.KILL_ARROWS);
     }
 
     /* 경험치 */
@@ -144,7 +142,7 @@ public class CleanCommand implements CommandExecutor {
             }
         }
 
-        ChatUtil.killExperienceOrbs();
+        ChatUtil.broadcast(ChatUtil.KILL_EXPERIENCE_ORBS);
     }
 
     /* 주민 */
@@ -161,6 +159,6 @@ public class CleanCommand implements CommandExecutor {
                 entity.remove();
         }
 
-        ChatUtil.killVillagers();
+        ChatUtil.broadcast(ChatUtil.KILL_VILLAGERS);
     }
 }
