@@ -1,6 +1,6 @@
-package jiekie.command;
+package jiekie.clean.command;
 
-import jiekie.util.ChatUtil;
+import jiekie.clean.util.ChatUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.command.Command;

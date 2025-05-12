@@ -1,4 +1,4 @@
-package jiekie.completer;
+package jiekie.clean.completer;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;

@@ -1,4 +1,4 @@
-jiekie\completer\CleanTabCompleter.class
-jiekie\command\CleanCommand.class
-jiekie\CleanPlugin.class
-jiekie\util\ChatUtil.class
+jiekie\clean\CleanPlugin.class
+jiekie\clean\command\CleanCommand.class
+jiekie\clean\completer\CleanTabCompleter.class
+jiekie\clean\util\ChatUtil.class

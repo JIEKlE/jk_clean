@@ -1,7 +1,7 @@
-package jiekie;
+package jiekie.clean;
 
-import jiekie.command.CleanCommand;
-import jiekie.completer.CleanTabCompleter;
+import jiekie.clean.command.CleanCommand;
+import jiekie.clean.completer.CleanTabCompleter;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class CleanPlugin extends JavaPlugin {
